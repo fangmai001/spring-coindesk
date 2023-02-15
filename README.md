@@ -1,7 +1,8 @@
 # spring-coindesk
 
 這是一個 Java Spring 演練專案。
-可以針對各個貨幣，進行檢視、編輯、新增、刪除。貨幣資料來源是 coindesk。
+可以針對各個貨幣，進行檢視、編輯、新增、刪除。
+貨幣資料來源是 coindesk。
 
 ## API 文件說明
 
