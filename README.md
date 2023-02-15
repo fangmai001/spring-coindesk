@@ -40,6 +40,6 @@
 | code       | String   | 代號           |
 | nameEng    | String   | 貨幣英文名稱   |
 | nameChi    | String   | 貨幣中文名稱   |
-| rate       | Float   | 匯率           |
-| createTime | String   | 建立時間       |
-| updateTime | String   | 更新時間       |
+| rate       | Float    | 匯率           |
+| createTime | Instant  | 建立時間       |
+| updateTime | Instant  | 更新時間       |

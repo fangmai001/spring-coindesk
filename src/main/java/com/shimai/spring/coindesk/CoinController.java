@@ -1,16 +1,12 @@
 package com.shimai.spring.coindesk;
 
-import com.fasterxml.jackson.databind.ObjectMapper;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
-import java.io.BufferedReader;
-import java.io.IOException;
-import java.io.InputStream;
-import java.io.InputStreamReader;
-import java.net.URL;
 import java.util.*;
+import java.time.*;
+
 
 @RestController
 @RequestMapping("/coin")
@@ -32,10 +28,14 @@ public class CoinController {
             Float rate = Float.valueOf(item.get("rate").replace(",", ""));
             String nameEng = item.get("nameEng");
             String nameChi = item.get("nameChi");
+            Instant nowTimeZone = this.coinService.getNowTimeZone();
+
             Coin coin = new Coin(code);
             coin.setRate(rate);
             coin.setNameEng(nameEng);
             coin.setNameChi(nameChi);
+            coin.setCreateTime(nowTimeZone);
+            coin.setUpdateTime(nowTimeZone);
             coinRepository.save(coin);
         }
     }
@@ -47,11 +47,14 @@ public class CoinController {
             Float rate = Float.valueOf(item.get("rate").replace(",", ""));
             String nameEng = item.get("nameEng");
             String nameChi = item.get("nameChi");
+            Instant nowTimeZone = this.coinService.getNowTimeZone();
+
             List<Coin> coins = coinRepository.findByCode(code);
             Coin coin = coins.get(0);
             coin.setRate(rate);
             coin.setNameEng(nameEng);
             coin.setNameChi(nameChi);
+            coin.setUpdateTime(nowTimeZone);
             coinRepository.save(coin);
         }
     }
@@ -78,6 +81,9 @@ public class CoinController {
     // [POST] coin
     @PostMapping
     public Coin create(@RequestBody Coin coin){
+        Instant nowTimeZone = this.coinService.getNowTimeZone();
+        coin.setCreateTime(nowTimeZone);
+        coin.setUpdateTime(nowTimeZone);
         return coinRepository.save(coin);
     }
 
@@ -87,10 +93,15 @@ public class CoinController {
             @PathVariable String id,
             @RequestBody Coin coin
     ){
+        Instant nowTimeZone = this.coinService.getNowTimeZone();
+
         if (coinRepository.existsById(id)) {
-            return new ResponseEntity<>(coinRepository.save(coin), HttpStatus.CREATED);
-        } else {
+            coin.setUpdateTime(nowTimeZone);
             return new ResponseEntity<>(coinRepository.save(coin), HttpStatus.OK);
+        } else {
+            coin.setCreateTime(nowTimeZone);
+            coin.setUpdateTime(nowTimeZone);
+            return new ResponseEntity<>(coinRepository.save(coin), HttpStatus.CREATED);
         }
     }
 

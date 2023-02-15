@@ -3,6 +3,7 @@ package com.shimai.spring.coindesk;
 import jakarta.persistence.Entity;
 import jakarta.persistence.Id;
 
+import java.time.Instant;
 import java.util.UUID;
 
 @Entity
@@ -15,9 +16,8 @@ public class Coin {
     private String nameEng;
     private String nameChi;
     private Float rate;
-
-//    private String createTime;
-//    private String updateTime;
+    private Instant createTime;
+    private Instant  updateTime;
 
     public Coin(){
         this(UUID.randomUUID().toString(), null);
@@ -50,6 +50,14 @@ public class Coin {
         this.rate = rate;
     }
 
+    public void setCreateTime(Instant createTime) {
+        this.createTime = createTime;
+    }
+
+    public void setUpdateTime(Instant updateTime) {
+        this.updateTime = updateTime;
+    }
+
     public String getId() {
         return id;
     }
@@ -68,5 +76,13 @@ public class Coin {
 
     public String getNameEng() {
         return nameEng;
+    }
+
+    public Instant getCreateTime() {
+        return createTime;
+    }
+
+    public Instant getUpdateTime() {
+        return updateTime;
     }
 }

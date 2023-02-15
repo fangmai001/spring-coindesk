@@ -7,11 +7,22 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.net.URL;
+import java.time.Instant;
+import java.time.ZoneId;
+import java.time.ZonedDateTime;
 import java.util.ArrayList;
 import java.util.HashMap;
 
 public class CoinService {
     CoinService() {}
+
+    public Instant getNowTimeZone() {
+        Instant nowInstant = Instant.now();
+        ZoneId taipeiZoneId = ZoneId.of("Asia/Taipei");
+        Instant nowTimeZone = ZonedDateTime.ofInstant(nowInstant, taipeiZoneId).toInstant();
+
+        return nowTimeZone;
+    }
 
     public ArrayList<HashMap<String, String>> fetchCoinDesk(){
         ArrayList<HashMap<String, String>> result = new ArrayList<>();
