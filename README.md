@@ -2,7 +2,7 @@
 
 這是一個 Java Spring 專案。  
 可以針對各個貨幣，進行檢視、編輯、新增、刪除。  
-貨幣資料來源是 coindesk。
+貨幣資料來源是 coindesk (https://api.coindesk.com/v1/bpi/currentprice.json)。
 
 ## API 文件說明
 
