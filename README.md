@@ -26,6 +26,10 @@
 
 `[DELETE] http://localhost:8080/coin/{id}`
 
+### 將所有貨幣與 coindesk 同步更新
+
+`[GET] http://localhost:8080/coin/updateToLatest`
+
 ## 資料表
 
 ### Coin 貨幣
