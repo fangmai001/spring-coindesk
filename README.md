@@ -4,6 +4,24 @@
 可以針對各個貨幣，進行檢視、編輯、新增、刪除。  
 貨幣資料來源是 coindesk (https://api.coindesk.com/v1/bpi/currentprice.json)。
 
+## 檔案結構
+
+```
+├─src
+   ├─main
+      ├─java
+         └─com
+             └─shimai
+                 └─spring
+                     └─coindesk
+                             Application.java <------ 啟動器
+                             Coin.java <------------- Model
+                             CoinController.java <--- Controller
+                             CoinRepository.java <--- Repository
+                             CoinService.java <------ Service
+
+```
+
 ## API 文件說明
 
 ### 檢視所有幣別列表
