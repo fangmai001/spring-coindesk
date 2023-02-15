@@ -43,3 +43,54 @@
 | rate       | Float    | 匯率           |
 | createTime | Instant  | 建立時間       |
 | updateTime | Instant  | 更新時間       |
+
+## SQL語法
+
+### 新增 coin
+
+```roomsql
+INSERT INTO coin (code, nameEng, nameChi, rate, createTime, updateTime) 
+VALUES 
+  (
+    $1, $2, $3, $4, $5, $6
+  );
+```
+
+### 檢視 coin
+
+```roomsql
+SELECT 
+  code, 
+  nameEng, 
+  nameChi, 
+  rate, 
+  createTime, 
+  updateTime 
+FROM 
+  coin 
+where 
+  id = $1
+```
+
+### 更新 coin
+
+```roomsql
+UPDATE
+coin
+SET
+code = $1,
+nameEng = $2,
+nameChi = $3,
+rate = $4,
+createTime = $5,
+updateTime = $6
+```
+
+### 刪除 coin
+
+```roomsql
+DELETE FROM 
+  coin 
+WHERE 
+  id = $1
+```
