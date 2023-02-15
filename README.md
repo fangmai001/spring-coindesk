@@ -1,6 +1,6 @@
 # spring-coindesk
 
-這是一個 Java Spring 演練專案。  
+這是一個 Java Spring 專案。  
 可以針對各個貨幣，進行檢視、編輯、新增、刪除。  
 貨幣資料來源是 coindesk。
 
@@ -40,6 +40,6 @@
 | code       | String   | 代號           |
 | nameEng    | String   | 貨幣英文名稱   |
 | nameChi    | String   | 貨幣中文名稱   |
-| rate       | String   | 匯率           |
+| rate       | Float   | 匯率           |
 | createTime | String   | 建立時間       |
 | updateTime | String   | 更新時間       |

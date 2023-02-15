@@ -14,7 +14,7 @@ public class Coin {
     private String code;
     private String nameEng;
     private String nameChi;
-    private String rate;
+    private Float rate;
 
 //    private String createTime;
 //    private String updateTime;
@@ -46,7 +46,7 @@ public class Coin {
         this.nameEng = nameEng;
     }
 
-    public void setRate(String rate) {
+    public void setRate(Float rate) {
         this.rate = rate;
     }
 
@@ -54,7 +54,7 @@ public class Coin {
         return id;
     }
 
-    public String getRate() {
+    public Float getRate() {
         return rate;
     }
 

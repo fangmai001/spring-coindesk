@@ -29,7 +29,7 @@ public class CoinController {
         ArrayList<HashMap<String, String>> src = this.coinService.fetchCoinDesk();
         for(HashMap<String, String> item : src) {
             String code = item.get("code");
-            String rate = item.get("rate");
+            Float rate = Float.valueOf(item.get("rate").replace(",", ""));
             String nameEng = item.get("nameEng");
             String nameChi = item.get("nameChi");
             Coin coin = new Coin(code);
@@ -44,7 +44,7 @@ public class CoinController {
         ArrayList<HashMap<String, String>> src = this.coinService.fetchCoinDesk();
         for(HashMap<String, String> item : src) {
             String code = item.get("code");
-            String rate = item.get("rate");
+            Float rate = Float.valueOf(item.get("rate").replace(",", ""));
             String nameEng = item.get("nameEng");
             String nameChi = item.get("nameChi");
             List<Coin> coins = coinRepository.findByCode(code);
